@@ -1,0 +1,37 @@
+[
+  {
+    "path": "天猫电商用户行为与复购数据/sample_submission.csv",
+    "bytes": 4062128,
+    "sha256": "95d5b64a975979dc6fe0aa5c82fecb3af1114c68b75cb02a80dfd126d9988531"
+  },
+  {
+    "path": "天猫电商用户行为与复购数据/data_format1/data_format1/test_format1.csv",
+    "bytes": 3277697,
+    "sha256": "570ce4734debd5e10017f1cb89dd6b2eda8dd75141e29effbb7a6f3c48ac49bc"
+  },
+  {
+    "path": "天猫电商用户行为与复购数据/data_format1/data_format1/train_format1.csv",
+    "bytes": 3530906,
+    "sha256": "b206b7ea7b90101383017273dad950106799f40ba15c05e2a3977e4d91752fac"
+  },
+  {
+    "path": "天猫电商用户行为与复购数据/data_format1/data_format1/user_info_format1.csv",
+    "bytes": 4546137,
+    "sha256": "6f2e496fe602b672c1013eca1334b671501ccd39ddde010517658317eecccde1"
+  },
+  {
+    "path": "天猫电商用户行为与复购数据/data_format1/data_format1/user_log_format1.csv",
+    "bytes": 1910208392,
+    "sha256": "a6bc8eabc40b61a562a5e45c91e9b822418d0d863576b28a9ccd549451e55a92"
+  },
+  {
+    "path": "天猫电商用户行为与复购数据/data_format2/data_format2/test_format2.csv",
+    "bytes": 768663861,
+    "sha256": "a56241061dbf5cd87bdc5a8f3fc67d33ba9d25808dd8628a1df8b1af45f1ce56"
+  },
+  {
+    "path": "天猫电商用户行为与复购数据/data_format2/data_format2/train_format2.csv",
+    "bytes": 767446877,
+    "sha256": "29f37e256121853c4cbb67889fc21a6ebdaa0b81d4675ea6f942b70bb471798d"
+  }
+]

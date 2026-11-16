@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:17@sha256:846a7ddaa67a4b354ae1d21087b683901aa6113a4ed626d3787cfbf6c85e3e07
+    environment:
+      POSTGRES_USER: superset
+      POSTGRES_DB: superset
+      POSTGRES_PASSWORD: ${SUPERSET_DB_PASSWORD:?Set in .env}
+    volumes:
+      - superset-db:/var/lib/postgresql/data
+    mem_limit: 450m
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "superset", "-d", "superset"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  superset:
+    build: ./superset
+    environment:
+      SUPERSET_SECRET_KEY: ${SUPERSET_SECRET_KEY:?Set in .env}
+      SUPERSET_DB_PASSWORD: ${SUPERSET_DB_PASSWORD:?Set in .env}
+      SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:?Set in .env}
+      CLICKHOUSE_BI_PASSWORD: ${CLICKHOUSE_BI_PASSWORD:?Set in .env}
+      SUPERSET_CONFIG_PATH: /app/pythonpath/superset_config.py
+    volumes:
+      - ./superset:/app/pythonpath:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+      clickhouse:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:18088:8088"
+    mem_limit: 1100m
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        superset db upgrade
+        superset init
+        python /app/pythonpath/seed.py
+        exec gunicorn --workers 2 --timeout 120 --bind 0.0.0.0:8088 "superset.app:create_app()"
+volumes:
+  superset-db:

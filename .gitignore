@@ -1,0 +1,11 @@
+.env
+.env.*
+.venv/
+天猫电商用户行为与复购数据/
+*.csv
+__pycache__/
+.build/
+outputs/
+*.zip
+.sample.lock
+.full.lock
